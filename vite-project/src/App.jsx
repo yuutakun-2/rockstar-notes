@@ -4,6 +4,8 @@ import Header from "./components/Header";
 import Item from "./components/Item";
 
 import { Container } from "@mui/material";
+import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
 
 export default function App() {
   const inputRef = useRef();
@@ -39,8 +41,19 @@ export default function App() {
             e.currentTarget.reset();
           }}
         >
-          <input type="text" style={{ flexGrow: 1 }} ref={inputRef} />
-          <button>Add</button>
+          {/* <input type="text" style={{ flexGrow: 1 }} ref={inputRef} /> */}
+          <TextField
+            type="text"
+            id="outlined-basic"
+            label="Outlined"
+            variant="outlined"
+            style={{ flexGrow: 1 }}
+            inputRef={inputRef}
+          />
+          {/* <button>Add</button> */}
+          <Button variant="contained" type="submit">
+            Contained
+          </Button>
         </form>
 
         {posts.map((post) => (
