@@ -2,6 +2,7 @@ import { useState, useRef } from "react";
 
 import Header from "./components/Header";
 import Item from "./components/Item";
+import Lizard from "./components/Lizard";
 
 import { Container } from "@mui/material";
 import Button from "@mui/material/Button";
@@ -59,6 +60,8 @@ export default function App() {
         {posts.map((post) => (
           <Item key={post.id} post={post} remove={remove} />
         ))}
+
+        <Lizard />
       </Container>
     </div>
   );
