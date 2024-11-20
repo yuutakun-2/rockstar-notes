@@ -7,6 +7,7 @@ import Lizard from "./components/Lizard";
 import { Container } from "@mui/material";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
+import People from "./components/People";
 
 export default function App() {
   const inputRef = useRef();
@@ -59,7 +60,10 @@ export default function App() {
 
         {posts.map((post) => (
           <Item key={post.id} post={post} remove={remove} />
+          // key is only needed here, it's not needed to reuse in the Item component for Virtual DOM
         ))}
+
+        <People />
 
         <Lizard />
       </Container>
