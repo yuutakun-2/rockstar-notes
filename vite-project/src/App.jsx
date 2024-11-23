@@ -3,6 +3,7 @@ import { useState, useRef } from "react";
 import Header from "./components/Header";
 import Item from "./components/Item";
 import Lizard from "./components/Lizard";
+import Form from "./Form";
 
 import { Container } from "@mui/material";
 import Button from "@mui/material/Button";
@@ -10,6 +11,8 @@ import TextField from "@mui/material/TextField";
 import People from "./components/People";
 
 export default function App() {
+  const [showForm, setShowForm] = useState(false);
+
   const inputRef = useRef();
 
   const [posts, setPosts] = useState([
@@ -18,9 +21,9 @@ export default function App() {
     { id: 1, content: "Another content", user: "Bob" },
   ]);
 
-  const add = (content) => {
+  const add = (content, name) => {
     const id = posts[0].id + 1;
-    setPosts([{ id, content, user: "Alice" }, ...posts]);
+    setPosts([{ id, content, user: name }, ...posts]);
   };
 
   const remove = (id) => {
@@ -30,8 +33,31 @@ export default function App() {
   return (
     <div>
       <Header />
-
       <Container sx={{ mt: 4 }} maxWidth="md">
+        <h1
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
+          Foodie
+          <button
+            onClick={() => setShowForm(!showForm)}
+            style={{
+              width: 32,
+              height: 32,
+              borderRadius: 50,
+              border: "0 none",
+              background: showForm ? "#dc3545" : "#0d6efd",
+              color: "white",
+            }}
+          >
+            {showForm ? "×" : "+"}
+          </button>
+        </h1>
+        {showForm && <Form add={add} />}
+        {/* Conditional rendering */}
         <form
           style={{ marginBottom: 20, display: "flex" }}
           onSubmit={(e) => {
